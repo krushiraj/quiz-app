@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QuizApp Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align:center;">
+        <div >
+            <h1>Welcome {{user.username}}</h1>
+        </div>
+        <div style="position:absolute; right:10vw;">
+            <a href="/accounts/logout/">
+                <input type="button" value="Logout">
+            </a>
+        </div>
+    </div>
+    <br>
+    <hr>
+    {% if user.is_staff %}
+    <div style="text-align:center;">
+        <a href="/admin/forms/form/add" target="_blank">
+            <input type="button" value="Add new quiz">
+        </a>
+        <div class="w3-container">
+            <h2>Drafted quizzes</h2>
+            <ul>
+                {% for quiz, quiz_link in drafts%}
+                <li>
+                    <h3>{{quiz}}</h3>
+                    <a href="/admin/forms/form/{{ quiz.id }}/change/" target="_blank">
+                        <input type="button" value="Edit quiz">
+                    </a>
+                    <a href="/admin/forms/form/{{ quiz.id }}/entries/" target="_blank">
+                        <input type="button" value="View entries">
+                    </a>
+                    <a href="{{ quiz_link }}" target="_blank">
+                        <input type="button" value="Add answers">
+                    </a>
+                    <a href="/admin/forms/form/" target="_blank">
+                            <input type="button" value="publish">
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container">
+            <h2>Published quizzes</h2>
+            <ul>
+                {% for quiz, quiz_link in published%}
+                <li>
+                    <h3>{{quiz}}</h3>
+                    <a href="/admin/forms/form/{{ quiz.id }}/change/" target="_blank">
+                        <input type="button" value="Edit quiz">
+                    </a>
+                    <a href="/admin/forms/form/{{ quiz.id }}/entries/" target="_blank">
+                        <input type="button" value="View entries">
+                    </a>
+                    <a href="/marks/{{ quiz.id }}/" target="_blank">
+                        <input type="button" value="Evaluate &amp; View results">
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <hr>
+        </div>
+    </div>
+    {% else %}
+    <div style="text-align:center;">
+        <div class="w3-container">
+            <h2>Unattempted quizzes</h2>
+            <ul>
+                {% for quiz, quiz_link in unattempted%}
+                <li>
+                    <h3>{{quiz}}</h3>
+                    <a href="{{ quiz_link }}" target="_blank">
+                        <input type="button" value="Write quiz">
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container">
+            <h2>Attempted quizzes</h2>
+            <ul>
+                {% for quiz, quiz_link in attempted%}
+                <li>
+                    <h3>{{quiz}}</h3>
+                    <a href="/marks/{{ quiz.id }}/" target="_blank">
+                        <input type="button" value="View marks">
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <hr>
+        </div>
+    </div>
+    {% endif %}
+</body>
+
+</html>

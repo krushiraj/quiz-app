@@ -1,0 +1,136 @@
+body
+{
+    display: flex;
+    justify-content: center;
+}
+
+#loginDiv
+{
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-self: center;
+    width: 760px;
+    border: 1px thick grey;
+}
+
+#loginForm
+{
+    align-self: center;
+}
+
+#loginForm > label
+{
+    font-size: 20px;
+    text-align: left;
+}
+
+input[type=text], input[type=password] 
+{
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+    text-align: left;
+    min-width: 250px;
+    border-bottom: 1px solid grey;
+}
+
+input[type=text]:focus, input[type=password]:focus
+{
+    border: none;
+    border-bottom: 2px solid skyblue;
+}
+
+input[type=text]:hover, input[type=password]:hover
+{
+    border: none;
+    border-bottom: 2px solid lightblue;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    opacity: 0;
+}
+
+[type="radio"]:checked + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: skyblue;
+}
+
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: black;
+}
+
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #0066FF;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    color : green;
+}
+
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+button 
+{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    text-align: center;
+    min-width: 100px;
+    border-radius: 7px;
+}
+
+button:hover 
+{
+    opacity: 0.8;
+}
